@@ -187,6 +187,3 @@ This application demonstrates a **clean, maintainable OOP design** guided by the
 By using abstraction and inheritance, new output formats can be added easily without altering existing functionality.
 The result is a **modular, extensible, and future-proof** approach to managing and displaying product information.
 
----
-
-Would you like me to also make this README slightly shorter (like for GitHub repo — under 1 page) or keep it in this detailed academic style?
