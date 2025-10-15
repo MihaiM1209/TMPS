@@ -189,4 +189,3 @@ The result is a **modular, extensible, and future-proof** approach to managing a
 
 ---
 
-Would you like me to also make this README slightly shorter (like for GitHub repo — under 1 page) or keep it in this detailed academic style?
