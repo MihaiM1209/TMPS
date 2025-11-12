@@ -1,0 +1,15 @@
+{
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "python.terminal.activateEnvironment": false,
+    "python.terminal.executeInFileDir": true,
+    "code-runner.executorMap": {
+        "python": "python3 -u"
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.clearPreviousOutput": true,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    }
+}
+

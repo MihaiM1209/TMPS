@@ -187,5 +187,8 @@ This application demonstrates a **clean, maintainable OOP design** guided by the
 By using abstraction and inheritance, new output formats can be added easily without altering existing functionality.
 The result is a **modular, extensible, and future-proof** approach to managing and displaying product information.
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 54b72fc7e25085d282bfbc33c39944336b5d5088
