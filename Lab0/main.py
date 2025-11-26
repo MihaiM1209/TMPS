@@ -58,3 +58,5 @@ if __name__ == "__main__":
     json_printer = JSONProductPrinter()
     json_printer.print_product(product1)
     json_printer.print_product(product2)
+
+
