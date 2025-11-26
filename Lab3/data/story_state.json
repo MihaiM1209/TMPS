@@ -1,0 +1,238 @@
+{
+    "Chapter 1": {
+      "title": "The Awakening",
+      "description": "You wake up in the wasteland, disoriented and starving. Your journey begins.",
+      "choices": [
+        {
+          "text": "Search the ruins of an old shack.",
+          "result": {
+            "description": "You find a rusty knife and a can of beans.",
+            "updates": {
+              "items": ["Rusty Knife", "Can of Beans"]
+            },
+            "command": {
+              "type": "search",
+              "items_found": ["Rusty Knife", "Can of Beans"]
+            },
+            "next_chapter": "Chapter 2"
+          }
+        },
+        {
+          "text": "Visit the nearby settlement.",
+          "result": {
+            "description": "You meet a merchant who offers you a map in exchange for 5 Credits.",
+            "updates": {
+              "money": -5
+            },
+            "command": {
+              "type": "trade",
+              "item": "Map"
+            },
+            "next_chapter": "Chapter 2"
+          }
+        }
+      ]
+    },
+    "Chapter 2": {
+      "title": "The Merchant's Offer",
+      "description": "You are now on the merchant's map. It leads to a vast desert.",
+      "choices": [
+        {
+          "text": "Explore the desert.",
+          "result": {
+            "description": "You find a buried chest containing a water bottle and some scrap metal.",
+            "updates": {
+              "items": ["Water Bottle", "Scrap Metal"]
+            },
+            "command": {
+              "type": "search",
+              "items_found": ["Water Bottle", "Scrap Metal"]
+            },
+            "next_chapter": "Chapter 3"
+          }
+        },
+        {
+          "text": "Confront the merchant about a suspicious offer.",
+          "result": {
+            "description": "The merchant grows hostile and a fight ensues.",
+            "updates": {},
+            "command": {
+              "type": "combat",
+              "enemy": "Merchant",
+              "combat_type": "balanced"
+            },
+            "next_chapter": "Chapter 4"
+          }
+        }
+      ]
+    },
+    "Chapter 3": {
+      "title": "A Desert Adventure",
+      "description": "The sun is scorching. You're running low on water.",
+      "choices": [
+        {
+          "text": "Search for water.",
+          "result": {
+            "description": "You find a hidden oasis with fresh water.",
+            "updates": {
+              "items": ["Water Bottle"]
+            },
+            "command": {
+              "type": "search",
+              "items_found": ["Water Bottle"]
+            },
+            "next_chapter": "Chapter 5"
+          }
+        },
+        {
+          "text": "Set up camp for the night.",
+          "result": {
+            "description": "You hear distant voices. A group of raiders approaches.",
+            "updates": {},
+            "command": {
+              "type": "combat",
+              "enemy": "Raiders",
+              "combat_type": "aggressive"
+            },
+            "next_chapter": "Chapter 6"
+          }
+        }
+      ]
+    },
+    "Chapter 4": {
+      "title": "Merchant's Revenge",
+      "description": "You barely survived the fight. The merchant was tougher than expected.",
+      "choices": [
+        {
+          "text": "Take his supplies and flee.",
+          "result": {
+            "description": "You take a few items from the merchant's body and run.",
+            "updates": {
+              "items": ["Merchant's Dagger", "Map"]
+            },
+            "command": {
+              "type": "search",
+              "items_found": ["Merchant's Dagger", "Map"]
+            },
+            "next_chapter": "Chapter 7"
+          }
+        },
+        {
+          "text": "Bury him and continue on your journey.",
+          "result": {
+            "description": "You leave the merchant's body behind and head deeper into the desert.",
+            "updates": {},
+            "command": {
+              "type": "search",
+              "items_found": ["Old Desert Map"]
+            },
+            "next_chapter": "Chapter 8"
+          }
+        }
+      ]
+    },
+    "Chapter 5": {
+      "title": "The Oasis",
+      "description": "The oasis offers respite, but there’s something eerie about it.",
+      "choices": [
+        {
+          "text": "Rest by the water and recover.",
+          "result": {
+            "description": "You regain some stamina but hear strange sounds in the distance.",
+            "updates": {
+              "stamina": 10
+            },
+            "command": {
+              "type": "rest",
+              "stamina_gain": 10
+            },
+            "next_chapter": "Chapter 9"
+          }
+        },
+        {
+          "text": "Investigate the noise.",
+          "result": {
+            "description": "A wild animal attacks you.",
+            "updates": {},
+            "command": {
+              "type": "combat",
+              "enemy": "Wild Animal",
+              "combat_type": "defensive"
+            },
+            "next_chapter": "Chapter 10"
+          }
+        }
+      ]
+    },
+    "Chapter 6": {
+      "title": "Raiders' Ambush",
+      "description": "The raiders are closing in. Your options are limited.",
+      "choices": [
+        {
+          "text": "Fight the raiders head-on.",
+          "result": {
+            "description": "You draw your weapon and face the raiders.",
+            "updates": {},
+            "command": {
+              "type": "combat",
+              "enemy": "Raiders",
+              "combat_type": "aggressive"
+            },
+            "next_chapter": "Chapter 11"
+          }
+        },
+        {
+          "text": "Hide and wait for them to leave.",
+          "result": {
+            "description": "You manage to stay hidden and avoid a fight, but your supplies are low.",
+            "updates": {
+              "stamina": -10
+            },
+            "command": {
+              "type": "hide",
+              "stamina_loss": 10,
+              "item_found": "Old Map"
+            },
+            "next_chapter": "Chapter 12"
+          }
+        }
+      ]
+    },
+    "Chapter 7": {
+      "title": "Desert Night",
+      "description": "You travel through the desert at night, using the map you found.",
+      "choices": [
+        {
+          "text": "Follow the map to the rumored city.",
+          "result": {
+            "description": "The map leads you to a hidden city of ruins.",
+            "updates": {},
+            "command": {
+              "type": "search",
+              "items_found": ["Gold Coin"]
+            },
+            "next_chapter": "Chapter 13"
+          }
+        },
+        {
+          "text": "Camp for the night and rest.",
+          "result": {
+            "description": "You are awakened by strange sounds in the night. A mutant beast is approaching.",
+            "updates": {},
+            "command": {
+              "type": "combat",
+              "enemy": "Mutant Beast",
+              "combat_type": "balanced"
+            },
+            "next_chapter": "Chapter 14"
+          }
+        }
+      ]
+    },
+    "ENDING": {
+      "title": "Journey's End",
+      "description": "You find your way out of the wasteland. Congratulations – you survived the adventure!",
+      "choices": []
+    }
+  }
+  
