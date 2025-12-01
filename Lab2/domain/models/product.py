@@ -1,41 +1,32 @@
-import datetime
-
-
 class Product:
-    def __init__(self, name, price, date: str, description=None):
+    """Product model representing items in the shopping cart."""
+    
+    def __init__(self, name, price, description=None, date=None):
         self.name = name
         self.price = price
         self.description = description
         self.date = date
 
     def __str__(self):
-        return f"{self.name} - ${self.price}: {self.description or 'No description'}"
+        desc = f" - {self.description}" if self.description else ""
+        date_info = f" (Date: {self.date})" if self.date else ""
+        return f"{self.name}: ${self.price:.2f}{desc}{date_info}"
 
+    def __repr__(self):
+        return f"Product(name='{self.name}', price={self.price}, description='{self.description}', date='{self.date}')"
 
-class ProductBuilder:
-    def __init__(self):
-        self.name = None
-        self.price = None
-        self.description = None
-        self.date = None
+    def get_price(self):
+        """Return the product price."""
+        return self.price
 
-    def set_name(self, name):
-        self.name = name
-        return self
+    def get_name(self):
+        """Return the product name."""
+        return self.name
 
-    def set_price(self, price):
-        self.price = price
-        return self
+    def get_description(self):
+        """Return the product description."""
+        return self.description
 
-    def set_description(self, description):
-        self.description = description
-        return self
-
-    def set_date(self, date):
-        self.date = str(date)
-        return self
-
-    def build(self):
-        if not self.name or self.price is None:
-            raise ValueError("Product must have a name and price.")
-        return Product(self.name, self.price, self.date, self.description)
+    def get_date(self):
+        """Return the product date."""
+        return self.date

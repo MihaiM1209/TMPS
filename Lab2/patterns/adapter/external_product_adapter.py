@@ -1,5 +1,4 @@
 from domain.models.product import Product
-import datetime
 
 class ExternalProductAdapter:
     def __init__(self, external_data):
@@ -9,6 +8,6 @@ class ExternalProductAdapter:
         return Product(
             name=self.external_data['title'],
             price=self.external_data['cost'],
-            date=datetime.datetime.now(),
+            date=self.external_data.get('date'),
             description=self.external_data.get('info', 'No description')
         )

@@ -1,6 +1,6 @@
-from domain.models.product import ProductBuilder
 from domain.models.shopping_cart import ShoppingCart
-from domain.factory.order_factory import OrderFactory
+from domain.models.product import Product
+from domain.models.order import Order
 from patterns.adapter.external_product_adapter import ExternalProductAdapter
 from patterns.decorator.product_decorator import DiscountedProductDecorator
 
@@ -10,7 +10,7 @@ class ShoppingCartClient:
         self.cart = ShoppingCart()
 
     def add_product(self, name, price, date=None, description=None):
-        product = ProductBuilder().set_name(name).set_price(price).set_description(description).set_date(date).build()
+        product = Product(name, price, description, date)
         self.cart.add_item(product)
         print(f"Added {product} to the cart.")
 
@@ -19,20 +19,24 @@ class ShoppingCartClient:
             self.cart.remove_item(product)
             print(f"Removed {product} from the cart.")
         else:
-            print(f"{product} not found in the cart.")
+            print(f"Product not found in the cart.")
 
     def view_cart(self):
-        print("Shopping Cart Items:")
-        for item in self.cart.view_cart():
-            print(item)
-        print(f"Total Price: ${self.cart.total_price():.2f}")
+        items = self.cart.view_cart()
+        if not items:
+            print("  (Cart is empty)")
+            return
+        for i, item in enumerate(items, 1):
+            print(f"  {i}. {item}")
+        print(f"\n  Total Price: ${self.cart.total_price():.2f}")
 
-    def create_order(self):
+    def create_order(self, shipping_type="standard"):
         if not self.cart.view_cart():
             print("Cart is empty! Cannot create an order.")
-            return
-        order = OrderFactory.create_order(self.cart.view_cart())
+            return None
+        order = Order(self.cart.view_cart(), shipping_type)
         print(order)
+        return order
 
     def clear_cart(self):
         self.cart.clear_cart()
@@ -44,8 +48,8 @@ class ShoppingCartClient:
         self.cart.add_item(product)
         print(f"Added external product {product} to the cart.")
 
-    def add_discounted_product(self, name, price, discount, date=None, description=None):
-        product = ProductBuilder().set_name(name).set_price(price).set_description(description).set_date(date).build()
-        discounted_product = DiscountedProductDecorator(product, discount)
+    def add_discounted_product(self, name, price, discount_percentage, date=None, description=None):
+        product = Product(name, price, description, date)
+        discounted_product = DiscountedProductDecorator(product, discount_percentage / 100.0)
         self.cart.add_item(discounted_product)
         print(f"Added discounted product {discounted_product} to the cart.")
